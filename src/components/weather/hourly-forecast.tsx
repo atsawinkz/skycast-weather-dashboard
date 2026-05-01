@@ -38,7 +38,11 @@ export function HourlyForecast({ list, timezoneOffset }: HourlyForecastProps) {
                     {i === 0 ? "Now" : formatTime(item.dt, timezoneOffset)}
                   </span>
                   
-                  <WeatherIcon className="h-8 w-8 mb-3 text-foreground" />
+                  <WeatherIcon 
+                    className="h-8 w-8 mb-3 text-foreground" 
+                    aria-label={item.weather[0].description}
+                    role="img"
+                  />
                   
                   <span className="text-lg font-bold">
                     {Math.round(item.main.temp)}°

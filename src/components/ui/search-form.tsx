@@ -17,6 +17,7 @@ function SubmitButton() {
       size="icon"
       className="absolute right-0 top-0 h-full rounded-l-none rounded-r-full hover:bg-transparent"
       disabled={pending}
+      aria-label="Search city"
     >
       <Search className={`h-5 w-5 ${pending ? "animate-pulse text-primary" : "text-muted-foreground"}`} />
       <span className="sr-only">Search</span>
@@ -39,6 +40,7 @@ export function SearchForm({ defaultValue = "" }: { defaultValue?: string }) {
           className="pl-10 pr-12 py-6 rounded-full glass-panel focus-visible:ring-2 focus-visible:ring-primary/50 text-base shadow-sm transition-all"
           required
           autoComplete="off"
+          aria-label="City name"
         />
         <SubmitButton />
       </div>

@@ -44,7 +44,11 @@ export function DailyForecastList({ data }: DailyForecastProps) {
                 </span>
                 
                 <div className="flex items-center gap-2 w-16 md:w-24 justify-center">
-                  <WeatherIcon className="h-5 w-5 text-muted-foreground" />
+                  <WeatherIcon 
+                    className="h-5 w-5 text-muted-foreground" 
+                    aria-label={day.weather.description}
+                    role="img"
+                  />
                   <span className="text-xs text-muted-foreground hidden md:inline-block">
                     {Math.round(day.weather.id/100)*10}% {/* Mock POP as it's not in daily grouping simply */}
                   </span>

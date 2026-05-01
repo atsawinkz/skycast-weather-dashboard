@@ -34,7 +34,9 @@ export function CurrentWeatherCard({ weather }: CurrentWeatherCardProps) {
                 {formatTemp(weather.main.temp)}
               </span>
               {React.createElement(getWeatherIcon(weather.weather[0].id, isNight), { 
-                className: "h-20 w-20 sm:h-24 sm:w-24 text-primary drop-shadow-lg" 
+                className: "h-20 w-20 sm:h-24 sm:w-24 text-primary drop-shadow-lg",
+                "aria-label": weather.weather[0].description,
+                role: "img"
               })}
             </div>
           </div>
