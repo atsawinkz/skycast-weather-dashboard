@@ -50,7 +50,7 @@ export function WeatherDetailsGrid({ weather }: WeatherDetailsGridProps) {
           <Card key={index} className="glass-card border-0">
             <CardContent className="p-4 flex flex-col items-start gap-4">
               <div className="flex items-center gap-2 text-muted-foreground w-full">
-                <Icon className="h-4 w-4" />
+                <Icon className="h-4 w-4" role="img" aria-label={detail.title} />
                 <span className="text-xs uppercase tracking-wider font-semibold truncate">{detail.title}</span>
               </div>
               <div>
