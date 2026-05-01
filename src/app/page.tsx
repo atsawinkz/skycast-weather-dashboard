@@ -54,4 +54,23 @@ export default async function Home({
   );
 }
 
+import type { Metadata, Viewport } from "next";
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ city?: string }>;
+}): Promise<Metadata> {
+  const { city } = await searchParams;
+  const currentCity = city || "Bangkok";
+  return {
+    title: `${currentCity} Weather Forecast — SkyCast`,
+    description: `Get dynamic local weather data, dynamic outlooks, and advanced metrics for ${currentCity}. Powered by SkyCast.`,
+  };
+}
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0d1b2a",
+};
