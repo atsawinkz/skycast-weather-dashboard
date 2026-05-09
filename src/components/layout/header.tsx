@@ -6,19 +6,21 @@ import Link from "next/link";
 
 interface HeaderProps {
   city?: string;
+  country?: string;
 }
 
-export function Header({ city }: HeaderProps) {
+export function Header({ city, country }: HeaderProps) {
   const displayCity = city || "Bangkok";
+  const displayLocation = country ? `${displayCity}, ${country}` : displayCity;
   
   return (
     <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
       <div className="space-y-1">
         <span className="text-xs uppercase tracking-monocle-caps font-semibold text-muted-foreground">
-          Meteorology — Edition 01
+          Meteorology
         </span>
         <h1 className="text-4xl md:text-5xl font-serif-display font-medium capitalize">
-          {displayCity}
+          {displayLocation}
         </h1>
       </div>
       <div className="flex items-center gap-3">

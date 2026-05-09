@@ -31,7 +31,7 @@ export default async function Home({
   return (
     <div className="min-h-screen flex flex-col transition-colors duration-500 ease-in-out bg-background text-foreground">
       <div className="max-w-6xl mx-auto w-full px-4 md:px-8 py-8 space-y-8 flex-1">
-        <Header city={searchCity} />
+        <Header city={searchCity} country={currentWeather.sys.country} />
         
         <main className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Left Column */}
