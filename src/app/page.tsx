@@ -29,27 +29,37 @@ export default async function Home({
   const bgGradient = getWeatherGradientClass(currentWeather.weather[0].id, isNight);
 
   return (
-    <div className={`min-h-screen flex flex-col transition-colors duration-1000 ease-in-out bg-gradient-to-br ${bgGradient}`}>
-      <Header city={searchCity} />
-      
-      <main className="container mx-auto px-4 pb-12 flex-1">
-        <div className="flex flex-col gap-6">
-          <CurrentWeatherCard weather={currentWeather} />
-          
-          <WeatherDetailsGrid weather={currentWeather} />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2 flex flex-col gap-6">
-              <HourlyForecast list={forecastData.list} timezoneOffset={timezoneOffset} />
-              <ForecastChart data={dailyForecasts} />
-            </div>
-            
-            <div className="lg:col-span-1">
-              <DailyForecastList data={dailyForecasts} />
-            </div>
+    <div className="min-h-screen flex flex-col transition-colors duration-500 ease-in-out bg-background text-foreground">
+      <div className="max-w-6xl mx-auto w-full px-4 md:px-8 py-8 space-y-8 flex-1">
+        <Header city={searchCity} />
+        
+        <main className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Left Column */}
+          <div className="md:col-span-8 space-y-8">
+            <CurrentWeatherCard weather={currentWeather} />
+            <HourlyForecast list={forecastData.list} timezoneOffset={timezoneOffset} />
+            <ForecastChart data={dailyForecasts} />
+            <WeatherDetailsGrid weather={currentWeather} />
           </div>
-        </div>
-      </main>
+
+          {/* Right Column */}
+          <div className="md:col-span-4">
+            <DailyForecastList data={dailyForecasts} />
+          </div>
+        </main>
+      </div>
+      
+      {/* Footer */}
+      <div className="max-w-6xl mx-auto w-full px-4 md:px-8">
+        <footer className="pt-12 pb-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-muted-foreground text-xs uppercase tracking-widest font-medium">
+          <p>© 2026 Meteorology Edition — Monocle Series</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-accent transition-colors">Documentation</a>
+            <a href="#" className="hover:text-accent transition-colors">API Access</a>
+            <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

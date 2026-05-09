@@ -9,28 +9,21 @@ interface HeaderProps {
 }
 
 export function Header({ city }: HeaderProps) {
+  const displayCity = city || "Bangkok";
+  
   return (
-    <header className="sticky top-0 z-50 w-full glass-panel border-b-0 rounded-b-3xl mb-6">
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href="/" aria-label="SkyCast Home" className="flex items-center gap-2 group shrink-0">
-          <div className="bg-gradient-to-br from-blue-500 to-cyan-400 p-2 rounded-xl text-white shadow-lg group-hover:scale-105 transition-transform">
-            <CloudRain className="h-6 w-6" role="img" aria-label="SkyCast Logo" />
-          </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 hidden sm:inline-block">
-            SkyCast
-          </span>
-        </Link>
-
-        {/* Search Form */}
-        <div className="flex-1 max-w-xl flex justify-center">
-          <SearchForm defaultValue={city} />
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center gap-2 shrink-0">
-          <ThemeToggle />
-        </div>
+    <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
+      <div className="space-y-1">
+        <span className="text-xs uppercase tracking-monocle-caps font-semibold text-muted-foreground">
+          Meteorology — Edition 01
+        </span>
+        <h1 className="text-4xl md:text-5xl font-serif-display font-medium capitalize">
+          {displayCity}
+        </h1>
+      </div>
+      <div className="flex items-center gap-3">
+        <SearchForm defaultValue={city} />
+        <ThemeToggle />
       </div>
     </header>
   );
