@@ -10,6 +10,12 @@ interface ForecastChartProps {
 }
 
 export function ForecastChart({ data }: ForecastChartProps) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const chartData = data.map((day) => ({
     name: format(new Date(day.date), "EEE"),
     fullDate: format(new Date(day.date), "MMM d, yyyy"),
@@ -18,13 +24,14 @@ export function ForecastChart({ data }: ForecastChartProps) {
   }));
 
   return (
-    <section className="card-monocle p-6 space-y-6 h-full">
+    <section className="card-monocle p-6 space-y-6 h-full min-h-[300px]">
       <div className="flex justify-between items-center">
         <h3 className="text-sm uppercase tracking-monocle-caps font-semibold text-muted-foreground">Temperature Curve</h3>
         <span className="text-xs text-muted-foreground italic">Dynamic visual representation</span>
       </div>
-      <div className="h-48 w-full relative pt-4">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-48 w-full relative pt-4 min-h-0">
+        {mounted && (
+          <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
             <XAxis 
               dataKey="name" 
@@ -60,7 +67,8 @@ export function ForecastChart({ data }: ForecastChartProps) {
               })}
             </Bar>
           </BarChart>
-        </ResponsiveContainer>
+          </ResponsiveContainer>
+        )}
       </div>
     </section>
   );
