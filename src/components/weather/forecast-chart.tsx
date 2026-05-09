@@ -24,7 +24,7 @@ export function ForecastChart({ data }: ForecastChartProps) {
   }));
 
   return (
-    <section className="card-monocle p-6 space-y-6 h-full min-h-[300px]">
+    <section className="card-monocle p-6 space-y-6">
       <div className="flex justify-between items-center">
         <h3 className="text-sm uppercase tracking-monocle-caps font-semibold text-muted-foreground">Temperature Curve</h3>
         <span className="text-xs text-muted-foreground italic">Dynamic visual representation</span>
