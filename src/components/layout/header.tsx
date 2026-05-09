@@ -11,7 +11,10 @@ interface HeaderProps {
 
 export function Header({ city, country }: HeaderProps) {
   const displayCity = city || "Bangkok";
-  const displayLocation = country ? `${displayCity}, ${country}` : displayCity;
+  const fullCountryName = country 
+    ? new Intl.DisplayNames(['en'], { type: 'region' }).of(country) 
+    : "";
+  const displayLocation = fullCountryName ? `${displayCity}, ${fullCountryName}` : displayCity;
   
   return (
     <header className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
